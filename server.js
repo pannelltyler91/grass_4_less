@@ -13,6 +13,24 @@ app.set('views', 'templates');
 app.set('view engine', 'html');
 
 
+app.post('/api/admin/login', (req,res) => {
+    console.log(req.body)
+    res.send('');
+
+})
+app.post('/api/employee/login', (req,res) => {
+
+})
+app.post('/api/client/login', (req,res) => {
+
+})
+app.post('/api/client/register', (req,res) => {
+
+})
+
+
+
+
 
 
 app.listen(3000, () => {
