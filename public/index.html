@@ -9,21 +9,23 @@
 <body>
     <h1>Grass 4 Less</h1>
     <h1>Admin Login</h1>
-    <form id="adminLogin" action='http://localhost:3000/api/admin/login' method="POST">
+    <form>
         <label for="admin_username">Username:</label>
         <input type="text" name="admin_username" id="admin_username">
         <label for="admin_password">Password:</label>
         <input type="password" name="admin_password" id="admin_password">
-        <input type="submit" name="submit" id="admin_login" value="Login">
+        <input type="button" name="submit" id="admin_login" value="Login">
     </form>
+
     <h1>Employee Login</h1>
-    <form id="employeeLogin">
+    <form id="employeeLogin" action="employee/login" method="POST">
         <label for="employee_email">Email:</label>
         <input type="email" name="employee_email" id="employee_email">
         <label for="employee_password">Password:</label>
         <input type="password" name="employee_password" id="employee_password">
         <input type="submit" name="employee_login" id="employee_login" value="Login">
     </form>
+
     <h1>Client Login</h1>
     <form id="clientLogin">
         <label for="cl_email">Email:</label>
@@ -32,6 +34,7 @@
         <input type="password" name="cl_password" id="cl_password">
         <input type="submit" name="cl_login" id="cl_login" value="Login">
     </form>
+    
     <h1>Client Registration</h1>
     <form id="clientRegister">
         <label for="client_name">Name:</label>
