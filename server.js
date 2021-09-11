@@ -9,14 +9,14 @@ let users = [{user_name:'user1', password:'password1'},{user_name:'user2', passw
 
 app.use(express.json());
 
-app.use('/admin',adminRoutes)
+app.use('/admins',adminRoutes)
 app.use('/employee',empRoutes)
 app.use('/client',clientRoutes)
 
 app.use(express.static(__dirname + '/public'));
 
 app.engine('html', es6Renderer);
-app.set('views', 'templates');
+app.set('views','templates');
 app.set('view engine', 'html');
 
 

@@ -9,7 +9,7 @@ document.getElementById('admin_login').addEventListener('click', (e) =>{
     
     const data = { username: admin_username,pw:admin_pw };
 
-    fetch('/admin/login', {
+    fetch('/admins/login', {
       method: 'POST', // or 'PUT'
       headers: {
         'Content-Type': 'application/json',
@@ -18,11 +18,10 @@ document.getElementById('admin_login').addEventListener('click', (e) =>{
     })
     .then(response => response.json())
     .then(data => {
-      console.log('Success:', data);
+      console.log(data)
+      
     })
-    .catch((error) => {
-      console.error('Error:', error);
-    });
+    
    
 })
 
