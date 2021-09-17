@@ -8,6 +8,9 @@ const db = require('./models')
 let users = [{user_name:'user1', password:'password1'},{user_name:'user2', password:'password2'},{user_name:'user3', password:'password3'}]
 
 app.use(express.json());
+app.use(express.urlencoded({
+    extended: true
+}))
 
 
 app.use(express.static(__dirname + '/public'));
@@ -17,19 +20,21 @@ app.engine('html', es6Renderer);
 app.set('views','templates');
 app.set('view engine', 'html');
 
-app.get('/aLogin', (req,res) =>{
-    res.render('/adminLogin');
-})
+
 
 
 app.post('/api/admin/login', (req,res) => {
     console.log(req.body)
     db.admin.findAll(
-       { where:{username:req.body.username}}
+       { where:{username:req.body.admin_username}}
     ).then((user) =>{
-        console.log(user[0].password)
+        console.log(user[0].username)
+        res.render('adminProfile', {
+            locals:{
+                adminName:user[0].username
+            }
+        })
     })
-    res.json({})
 
 })
 
