@@ -27,10 +27,12 @@
         <div id="clientRegistrationForm">
             <h1>Client Registration</h1>
             <form id="clientRegister">
-                <label for="client_name">Name:</label>
-                <input type="text" name="client_name" id="client_name">
+                <label for="client_f_name">First Name:</label>
+                <input type="text" name="client_f_name" id="client_f_name">
+                <label for="client_l_name">Last Name:</label>
+                <input type="text" name="client_l_name" id="client_l_name">
                 <label for="client_phone">Phone:</label>
-                <input type="text" name="client_phone" id="client_phone">
+                <input type="tel" name="client_phone" id="client_phone">
                 <br>
                 <label for="client_address">Address:</label>
                 <input type="text" name="client_address" id="client_address">
@@ -45,14 +47,121 @@
         <div id="employeeRegistrationForm">  
             <h1>Employee Registration</h1>
             <form>
-                <label for="e_r_username">Username:</label>
-                <input type="text" name="employee_username" id="e_r_username">
+                <label for="e_r_username">Name:</label>
+                <input type="text" name="employee_name" id="e_r_name">
                 <label for="employee_password">Password:</label>
                 <input type="password" name="employee_password" id="e_r_password">
+                <label for="e_email">Email:</label>
+                <input type="email" name="e_email" id="e_email">
+                <label for="e_address">Address:</label>
+                <input type="text" name="e_address" id="e_address">
+                <label for="e_phone">Phone:</label>
+                <input type="tel" name="e_phone" id="e_phone">
+                <label for="employee_id">Employee Id:</label>
+                <input type="text" id="employee_id" name="employee_id">
+                <label for="employee_salary">Salary:</label>
+                <input type="text" id="employee_salary" name="employee_salary">
                 <input type="button" name="submit" id="e_register" value="Register">
             </form>
         </div>
     </div>
-    
+    <script >
+        //Registers new admin and adds to the database
+        document.getElementById('admin_register').addEventListener('click', (e)=>{
+        e.preventDefault();
+        console.log('clicked')
+        let admin_username = e.target.previousElementSibling.previousElementSibling.previousElementSibling.value; 
+            let admin_pw = e.target.previousElementSibling.value;
+
+            const data = { username: admin_username,pw:admin_pw };
+
+            fetch('/api/admin/register', {
+        method: 'POST', 
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+        })
+        .then(response => response.json())
+        .then(data => {
+        console.log('Success:', data);
+        location.reload();
+        
+
+        })
+        .catch((error) => {
+        console.error('Error:', error);
+        });
+        
+        })
+
+        //Registers new employee and adds to database
+        document.getElementById('e_register').addEventListener('click', (e)=>{
+        e.preventDefault();
+        let e_salary = e.target.previousElementSibling.value;
+        let e_id = e.target.previousElementSibling.previousElementSibling.previousElementSibling.value;
+        let e_phone = e.target.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.value;
+        let e_address = e.target.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.value;
+        let e_email = e.target.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.value;
+        let e_password = e.target.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.value;
+        let e_name = e.target.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.value;
+        const data = { name:e_name,pw:e_password,salary:e_salary,employee_id:e_id,phone:e_phone,email:e_email,address:e_address };
+        
+
+            fetch('/api/employee/register', {
+        method: 'POST', 
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+        })
+        .then(response => response.json())
+        .then(data => {
+        console.log('Success:', data);
+        location.reload();
+        
+        })
+        .catch((error) => {
+        console.error('Error:', error);
+        });
+        
+        })
+
+        //Registers new clients and adds them to the database
+        document.getElementById('cr_submit').addEventListener('click', (e)=>{
+        e.preventDefault();
+        console.log('clicked')
+
+        let c_password = e.target.previousElementSibling.value;
+        let c_email = e.target.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.value;
+        let c_address = e.target.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.value;
+        let c_phone = e.target.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.value;
+   
+        
+        
+        const data = { name:c_name,pw:c_password,phone:c_phone,email:c_email,address:c_address };
+        console.log(data);
+
+        //     fetch('/api/employee/register', {
+        // method: 'POST', 
+        // headers: {
+        //     'Content-Type': 'application/json',
+        // },
+        // body: JSON.stringify(data),
+        // })
+        // .then(response => response.json())
+        // .then(data => {
+        // console.log('Success:', data);
+        // location.reload();
+        
+        // })
+        // .catch((error) => {
+        // console.error('Error:', error);
+        // });
+        
+        })
+
+
+    </script>
 </body>
 </html>

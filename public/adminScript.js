@@ -7,7 +7,7 @@
 document.getElementById('admin_register').addEventListener('click', (e)=>{
   e.preventDefault();
   console.log('clicked')
-  let admin_username = e.target.previousElementSibling.previousElementSibling.previousElementSibling.value; //local scope
+  let admin_username = e.target.previousElementSibling.previousElementSibling.previousElementSibling.value; 
     let admin_pw = e.target.previousElementSibling.value;
 
     const data = { username: admin_username,pw:admin_pw };
@@ -22,7 +22,7 @@ document.getElementById('admin_register').addEventListener('click', (e)=>{
 .then(response => response.json())
 .then(data => {
   console.log('Success:', data);
-  location.assign('/adminLogin.html')
+ 
 
 })
 .catch((error) => {

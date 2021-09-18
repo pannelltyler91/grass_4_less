@@ -57,11 +57,11 @@ app.post('/api/admin/register', (req, res) => {
             username:req.body.username
         }
     }).then((users)=>{
-        if(users == {}){
+        if(users.length == 0){
           
             const passwordHash =  bcrypt.hashSync(req.body.pw,10)
             db.admin.create({
-                username: req.body.admin_username,
+                username: req.body.username,
                 password: passwordHash
             }).then(()=>{
                 res.json({})
@@ -78,26 +78,57 @@ app.post('/api/employee/register', (req, res) => {
     console.log(req.body);
     db.employees.findAll({
         where:{
-            username:req.body.username
+            name:req.body.name
         }
-    }).then((users)=>{
-        if(users == {}){
+    }).then((employees)=>{
+        if(employees.length == 0){
           
             const passwordHash =  bcrypt.hashSync(req.body.pw,10)
-            db.admin.create({
-                name: req.body.admin_username,
+            db.employees.create({
+                name: req.body.name,
                 password: passwordHash,
-                address:'',
-                phone:'',
-                employee_id:'',
-                salary:'',
-                email:'',
-                
+                address:req.body.address,
+                phone:req.body.phone,
+                employee_id:req.body.employee_id,
+                salary:req.body.salary,
+                email:req.body.email,
+
             }).then(()=>{
-                res.json({})
+                res.json({message:'Employee Added'})
             })
         }else{
-            res.status(409).json({error:'Admin with username already exists'})
+            res.status(409).json({error:'Employee with username already exists'})
+        }
+      
+        
+    })
+    // res.json({})
+})
+app.post('/api/client/register', (req, res) => {
+    console.log(req.body);
+    db.clients.findAll({
+        where:{
+            name:req.body.name
+        }
+    }).then((clients)=>{
+        if(clients.length == 0){
+          
+            const passwordHash =  bcrypt.hashSync(req.body.pw,10)
+            db.clients.create({
+                first_name: req.body.name,
+                last_name:req.body.
+                password: passwordHash,
+                address:req.body.address,
+                phone:req.body.phone,
+                employee_id:req.body.employee_id,
+                salary:req.body.salary,
+                email:req.body.email,
+
+            }).then(()=>{
+                res.json({message:'Employee Added'})
+            })
+        }else{
+            res.status(409).json({error:'Employee with username already exists'})
         }
       
         

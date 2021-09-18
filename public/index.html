@@ -43,12 +43,12 @@
     <div id='landingForms' class="container bg-light">
         <div id="landingAdminLogin" class="card bg-info">
             <h1>Admin Login</h1>
-            <form>
+            <form action="/api/admin/login" method="POST">
                 <label for="admin_username">Username:</label>
                 <input type="text" name="admin_username" id="admin_username">
                 <label for="admin_password">Password:</label>
                 <input type="password" name="admin_password" id="admin_password">
-                <input type="button" name="submit" id="admin_login" value="Login">
+                <input type="submit" name="submit" id="admin_login" value="Login">
             </form>
         </div>
         <br>
