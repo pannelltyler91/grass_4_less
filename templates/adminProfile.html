@@ -4,10 +4,55 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Admin Profile</title>
 </head>
 <body>
     <h1>Hello ${adminName}</h1>
+    <div id="seeAllLinks">
+        <a href=''>See All Employees/Ver Empleados</a>|
+        <a href=''>See All Clients/VerClientes</a>|
+        <a href=''>See All Admins/Ver Administradores</a>
+    </div>
+    <div id="registrationForms">
+        <div id="adminRegistrationForm">
+            <h1>Admin Registration</h1>
+            <form>
+                <label for="admin_r_username">Username:</label>
+                <input type="text" name="admin_username" id="admin_r_username">
+                <label for="admin_password">Password:</label>
+                <input type="password" name="admin_password" id="admin_r_password">
+                <input type="button" name="submit" id="admin_register" value="Register">
+            </form>
+        </div>
+        <div id="clientRegistrationForm">
+            <h1>Client Registration</h1>
+            <form id="clientRegister">
+                <label for="client_name">Name:</label>
+                <input type="text" name="client_name" id="client_name">
+                <label for="client_phone">Phone:</label>
+                <input type="text" name="client_phone" id="client_phone">
+                <br>
+                <label for="client_address">Address:</label>
+                <input type="text" name="client_address" id="client_address">
+                <label for="client_email">Email:</label>
+                <input type="email" name="client_email" id="client_email">
+                <br>
+                <label for="client_password">Password</label>
+                <input type="password" name="client_password" id="client_password">
+                <input type="submit" id="cr_submit" name="cr_submit" value="Register">
+            </form>
+        </div>
+        <div id="employeeRegistrationForm">  
+            <h1>Employee Registration</h1>
+            <form>
+                <label for="e_r_username">Username:</label>
+                <input type="text" name="employee_username" id="e_r_username">
+                <label for="employee_password">Password:</label>
+                <input type="password" name="employee_password" id="e_r_password">
+                <input type="button" name="submit" id="e_register" value="Register">
+            </form>
+        </div>
+    </div>
     
 </body>
 </html>

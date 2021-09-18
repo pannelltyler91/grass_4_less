@@ -4,59 +4,92 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    <title>Home</title>
 </head>
 <body>
-    <h1>Grass 4 Less</h1>
-    <h1>Admin Login</h1>
-    <form>
-        <label for="admin_username">Username:</label>
-        <input type="text" name="admin_username" id="admin_username">
-        <label for="admin_password">Password:</label>
-        <input type="password" name="admin_password" id="admin_password">
-        <input type="button" name="submit" id="admin_login" value="Login">
-    </form>
-    <h1>Admin Registration</h1>
-    <form>
-        <label for="admin_r_username">Username:</label>
-        <input type="text" name="admin_username" id="admin_r_username">
-        <label for="admin_password">Password:</label>
-        <input type="password" name="admin_password" id="admin_r_password">
-        <input type="button" name="submit" id="admin_register" value="Register">
-    </form>
-
-    <h1>Employee Login</h1>
-    <form id="employeeLogin" action="employee/login" method="POST">
-        <label for="employee_email">Email:</label>
-        <input type="email" name="employee_email" id="employee_email">
-        <label for="employee_password">Password:</label>
-        <input type="password" name="employee_password" id="employee_password">
-        <input type="submit" name="employee_login" id="employee_login" value="Login">
-    </form>
-
-    <h1>Client Login</h1>
-    <form id="clientLogin">
-        <label for="cl_email">Email:</label>
-        <input type="email" name="cl_email" id="cl_email">
-        <label for="cl_password">Password:</label>
-        <input type="password" name="cl_password" id="cl_password">
-        <input type="submit" name="cl_login" id="cl_login" value="Login">
-    </form>
-    
-    <h1>Client Registration</h1>
-    <form id="clientRegister">
-        <label for="client_name">Name:</label>
-        <input type="text" name="client_name" id="client_name">
-        <label for="client_phone">Phone:</label>
-        <input type="text" name="client_phone" id="client_phone">
-        <label for="client_address">Address:</label>
-        <input type="text" name="client_address" id="client_address">
-        <label for="client_email">Email:</label>
-        <input type="email" name="client_email" id="client_email">
-        <label for="client_password">Password</label>
-        <input type="password" name="client_password" id="client_password">
-        <input type="submit" id="cr_submit" name="cr_submit" value="Register">
-    </form>
-    <script src="script.js"></script>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">Grass 4 Less</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">Admin/Administradores</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Employees/Empleados</a>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Clients/Clientes
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <li><a class="dropdown-item" href="#">Register</a></li>
+                  <li><a class="dropdown-item" href="#">Login</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item" href="#">Contact Us</a></li>
+                </ul>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link disabled">Disabled</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    <div id='landingForms' class="container bg-light">
+        <div id="landingAdminLogin" class="card bg-info">
+            <h1>Admin Login</h1>
+            <form>
+                <label for="admin_username">Username:</label>
+                <input type="text" name="admin_username" id="admin_username">
+                <label for="admin_password">Password:</label>
+                <input type="password" name="admin_password" id="admin_password">
+                <input type="button" name="submit" id="admin_login" value="Login">
+            </form>
+        </div>
+        <br>
+        <div id="landingEmployeeLogin" class="card bg-info">
+            <h1>Employee Login</h1>
+            <form id="employeeLogin" action="employee/login" method="POST">
+                <label for="employee_email">Email:</label>
+                <input type="email" name="employee_email" id="employee_email">
+                <label for="employee_password">Password:</label>
+                <input type="password" name="employee_password" id="employee_password">
+                <input type="submit" name="employee_login" id="employee_login" value="Login">
+            </form>
+        </div>
+        <br>
+        <div id="landingClientLogin" class="card bg-info">  
+            <h1>Client Login</h1>
+            <form id="clientLogin">
+                <label for="cl_email">Email:</label>
+                <input type="email" name="cl_email" id="cl_email">
+                <label for="cl_password">Password:</label>
+                <input type="password" name="cl_password" id="cl_password">
+                <input type="submit" name="cl_login" id="cl_login" value="Login">
+            </form>
+        </div>
+        <br>
+        <div id="landingClientRegistration" class="card bg-info">
+            <h1>Client Registration</h1>
+            <form id="clientRegister">
+                <label for="client_name">Name:</label>
+                <input type="text" name="client_name" id="client_name">
+                <label for="client_phone">Phone:</label>
+                <input type="text" name="client_phone" id="client_phone">
+                <label for="client_address">Address:</label>
+                <input type="text" name="client_address" id="client_address">
+                <label for="client_email">Email:</label>
+                <input type="email" name="client_email" id="client_email">
+                <label for="client_password">Password</label>
+                <input type="password" name="client_password" id="client_password">
+                <input type="submit" id="cr_submit" name="cr_submit" value="Register">
+            </form>
+        </div>
+        </div>
 </body>
 </html>

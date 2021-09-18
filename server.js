@@ -56,23 +56,54 @@ app.post('/api/admin/register', (req, res) => {
         where:{
             username:req.body.username
         }
-    }).then((user)=>{
-        if(user.length == 0){
-            bcrypt.hash(req.body.pw,10).then((hash) =>{
-                db.admin.create({
-                    username:req.body.username,
-                    password:hash
-                }).then(()=>{
-                    res.json({})
-                }) 
-
+    }).then((users)=>{
+        if(users == {}){
+          
+            const passwordHash =  bcrypt.hashSync(req.body.pw,10)
+            db.admin.create({
+                username: req.body.admin_username,
+                password: passwordHash
+            }).then(()=>{
+                res.json({})
             })
         }else{
-            res.status(400).json({error:'Admin already exists!'})
+            res.status(409).json({error:'Admin with username already exists'})
         }
+      
+        
     })
     // res.json({})
-} )
+})
+app.post('/api/employee/register', (req, res) => {
+    console.log(req.body);
+    db.employees.findAll({
+        where:{
+            username:req.body.username
+        }
+    }).then((users)=>{
+        if(users == {}){
+          
+            const passwordHash =  bcrypt.hashSync(req.body.pw,10)
+            db.admin.create({
+                name: req.body.admin_username,
+                password: passwordHash,
+                address:'',
+                phone:'',
+                employee_id:'',
+                salary:'',
+                email:'',
+                
+            }).then(()=>{
+                res.json({})
+            })
+        }else{
+            res.status(409).json({error:'Admin with username already exists'})
+        }
+      
+        
+    })
+    // res.json({})
+})
 
 
 
