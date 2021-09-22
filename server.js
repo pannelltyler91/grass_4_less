@@ -158,6 +158,18 @@ app.get('/clients', (req,res) =>{
         })
     })
 })
+app.get('/administrators', (req,res) =>{
+    // console.log('route works')
+    // res.send('all employees')
+    db.admin.findAll(). then((admins)=>{
+        console.log(admins)
+        res.render('allAdmins', {
+            locals:{
+                admins:admins
+            }
+        })
+    })
+})
 
 
 
