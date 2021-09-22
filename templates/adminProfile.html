@@ -9,8 +9,8 @@
 <body>
     <h1>Hello ${adminName}</h1>
     <div id="seeAllLinks">
-        <a href=''>See All Employees/Ver Empleados</a>|
-        <a href=''>See All Clients/VerClientes</a>|
+        <a href='/employees'>See All Employees/Ver Empleados</a>|
+        <a href='/clients'>See All Clients/VerClientes</a>|
         <a href=''>See All Admins/Ver Administradores</a>
     </div>
     <div id="registrationForms">
@@ -131,33 +131,38 @@
         document.getElementById('cr_submit').addEventListener('click', (e)=>{
         e.preventDefault();
         console.log('clicked')
+        console.log(e.target.previousElementSibling.value)
 
-        let c_password = e.target.previousElementSibling.value;
-        let c_email = e.target.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.value;
+        let c_password = e.target.previousElementSibling.value
+        let c_email = e.target.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.value;
         let c_address = e.target.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.value;
         let c_phone = e.target.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.value;
-   
-        
-        
-        const data = { name:c_name,pw:c_password,phone:c_phone,email:c_email,address:c_address };
-        console.log(data);
+        let c_lastname = e.target.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.value;
+        let c_firstname = e.target.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.value;
 
-        //     fetch('/api/employee/register', {
-        // method: 'POST', 
-        // headers: {
-        //     'Content-Type': 'application/json',
-        // },
-        // body: JSON.stringify(data),
-        // })
-        // .then(response => response.json())
-        // .then(data => {
-        // console.log('Success:', data);
-        // location.reload();
+   
+      
+      
         
-        // })
-        // .catch((error) => {
-        // console.error('Error:', error);
-        // });
+        const data = { first_name:c_firstname,last_name:c_lastname,pw:c_password,phone:c_phone,email:c_email,address:c_address };
+        console.log(data)
+
+            fetch('/api/client/register', {
+        method: 'POST', 
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+        })
+        .then(response => response.json())
+        .then(data => {
+        console.log('Success:', data);
+        location.reload();
+        
+        })
+        .catch((error) => {
+        console.error('Error:', error);
+        });
         
         })
 

@@ -8,6 +8,12 @@
 </head>
 <body>
     <h1>Clients List/ Lista de Clientes</h1>
+
+    <ul>
+        ${clients.map(client => `
+            <li>${client.first_name } ${client.last_name}</li>
+        `).join('')}
+    </ul>
     
 </body>
 </html>

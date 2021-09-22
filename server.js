@@ -108,32 +108,55 @@ app.post('/api/client/register', (req, res) => {
     console.log(req.body);
     db.clients.findAll({
         where:{
-            name:req.body.name
+            email:req.body.email
         }
     }).then((clients)=>{
         if(clients.length == 0){
           
             const passwordHash =  bcrypt.hashSync(req.body.pw,10)
             db.clients.create({
-                first_name: req.body.name,
-                last_name:req.body.
+                first_name: req.body.first_name,
+                last_name:req.body.last_name,
                 password: passwordHash,
                 address:req.body.address,
                 phone:req.body.phone,
-                employee_id:req.body.employee_id,
-                salary:req.body.salary,
-                email:req.body.email,
+                email:req.body.email
 
             }).then(()=>{
-                res.json({message:'Employee Added'})
+                res.json({message:'Client Added'})
             })
         }else{
-            res.status(409).json({error:'Employee with username already exists'})
+            res.status(409).json({error:'Client with email already exists'})
         }
       
         
     })
     // res.json({})
+})
+
+app.get('/employees', (req,res) =>{
+    // console.log('route works')
+    // res.send('all employees')
+    db.employees.findAll(). then((employees)=>{
+        console.log(employees)
+        res.render('allEmployees', {
+            locals:{
+                employees:employees
+            }
+        })
+    })
+})
+app.get('/clients', (req,res) =>{
+    // console.log('route works')
+    // res.send('all employees')
+    db.clients.findAll(). then((clients)=>{
+        console.log(clients)
+        res.render('allClient', {
+            locals:{
+                clients:clients
+            }
+        })
+    })
 })
 
 
