@@ -12,12 +12,13 @@
 
     <ul>
         ${employees.map(employee => `
-            <li>${employee.name}</li>
-            <li>${employee.employee_id}</li>
-            <li>${employee.salary}</li>
-            <li>${employee.email}</li>
-            <li>${employee.phone}</li>
-            <li>${employee.address}</li>
+            <li>Name:${employee.name}</li>
+            <li>Employee ID:${employee.employee_id}</li>
+            <li>Salary:${employee.salary}</li>
+            <li>Email:${employee.email}</li>
+            <li>Phone:${employee.phone}</li>
+            <li>Address:${employee.address}</li>
+            <button class="updateEmployee">Update</button>
             <button class="deleteEmployee">Delete</button>
         `).join('')}
     </ul>
@@ -30,6 +31,18 @@
           eDeleteButtons[i].addEventListener('click', (e) =>{
               let employeeId = e.target.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.innerHTML;
               console.log('Employee Deleted', employeeId)
+              fetch('/api/employee/' + employeeId,{
+                  method:'DELETE',
+                  headers:{
+                      'Content-type': 'application/json'
+                  }
+              }).then(res => res.json)
+                .then(data => {
+
+                    console.log(data) 
+                        location.reload()
+                }
+                )              
 
           })
       }

@@ -146,6 +146,21 @@ app.get('/employees', (req,res) =>{
         })
     })
 })
+app.get('/employee/:id', (req,res) =>{
+    // console.log('route works')
+    // res.send('all employees')
+   db.employees.findAll({
+       where:{
+           employee_id:req.params.id
+       }
+   }).then((employee) =>{
+       res.render('editEmployee', {
+           locals:{
+               employee:employee
+           }
+       })
+   })
+})
 app.get('/clients', (req,res) =>{
     // console.log('route works')
     // res.send('all employees')
@@ -173,9 +188,18 @@ app.get('/administrators', (req,res) =>{
 
 
 
-app.delete('/employee/:id', (req,res) =>{
-    console.log('route is working')
-    res.send('employee deleted')
+app.delete('/api/employee/:id', (req,res) =>{
+    // console.log('route is working', req.params.id)
+    // res.send('employee deleted')
+    db.employees.destroy(
+        {
+            where:{
+                employee_id:req.params.id
+            }
+        }
+    ).then((result) =>{
+        res.json({message:result})
+    })
 })
 
 
