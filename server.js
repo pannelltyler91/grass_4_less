@@ -173,7 +173,10 @@ app.get('/administrators', (req,res) =>{
 
 
 
-
+app.delete('/employee/:id', (req,res) =>{
+    console.log('route is working')
+    res.send('employee deleted')
+})
 
 
 

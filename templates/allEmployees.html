@@ -13,9 +13,26 @@
     <ul>
         ${employees.map(employee => `
             <li>${employee.name}</li>
+            <li>${employee.employee_id}</li>
+            <li>${employee.salary}</li>
+            <li>${employee.email}</li>
+            <li>${employee.phone}</li>
+            <li>${employee.address}</li>
+            <button class="deleteEmployee">Delete</button>
         `).join('')}
     </ul>
     
     <a href=''>Return to Admin profile</a>
+    <script>
+      let eDeleteButtons = document.getElementsByClassName('deleteEmployee');
+
+      for(let i=0;i < eDeleteButtons.length;i++){
+          eDeleteButtons[i].addEventListener('click', (e) =>{
+              let employeeId = e.target.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.innerHTML;
+              console.log('Employee Deleted', employeeId)
+
+          })
+      }
+    </script>
 </body>
 </html>
